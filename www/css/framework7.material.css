@@ -8651,3 +8651,8 @@ html:not(.watch-active-state) .data-table .data-table-actions a.link.icon-only:a
     display: table-cell;
   }
 }
+@media (max-width: 320px) {
+  .panel {
+    width: 270px;
+  }
+}

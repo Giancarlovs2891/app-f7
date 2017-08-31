@@ -10,10 +10,10 @@
   background-image: url("../img/wallpaper.png");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 190px;
+  height: 160px;
   margin: 0;
   margin-top: -56px;
-  border-bottom: solid 190px rgba(0, 39, 83, 0.51);
+  border-bottom: solid 160px rgba(0, 39, 83, 0.51);
 }
 .left-menu-header img {
   height: 69px;
@@ -24,7 +24,7 @@
 }
 .left-menu-header .left-menu-info-user {
   position: absolute;
-  top: 138px;
+  top: 110px;
 }
 .left-menu-header .left-menu-info-user p.left-menu-user {
   color: #fff;
