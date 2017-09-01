@@ -29,10 +29,18 @@ $$(document).on('ajaxComplete', function (e) {
     myApp.hideIndicator();
 });
 
+myApp.onPageInit('login', function (page) {
+});
+
+myApp.onPageInit('load-data', function (page) {
+  myApp.showIndicator();
+  window.setTimeout(function() {
+    myApp.hideIndicator();
+    mainView.router.loadPage("views/main-menu.html")
+  },1000);
+});
+
 myApp.onPageInit('about', function (page) {
-  console.log(page);
-  console.log(page.context);
-  console.log(page.query.nombre);
 });
 
 myApp.onPageInit('clients-list', function (page){

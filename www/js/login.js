@@ -1,32 +1,61 @@
 if (!localStorage.getItem("login")) {
-  $("#app-login-page").show();
+  mainView.router.loadPage("views/login.html");
 } else {
-  $("#app-inner-content").show();
+  mainView.router.loadPage("index.html");
 }
 
-$("#sign-in-btn").click(function (){
-  $("#app-inner-content").show();
-  localStorage.setItem("login", "1");
-  $("#app-login-page").hide();
-});
+function login() {
+  var username = $$("#username-login").val().trim();
+  var password = $$("#password-login").val().trim();
+  if(username == "" || password == ""){
+    myApp.alert("Debe diligenciar todos los campos");
+    return;
+  }
+  var auth = "Basic " + btoa(username+":"+password);
 
-$("#sign-out-app").click(function (){
-  localStorage.removeItem("login");
-  $("#app-login-page").show();
-});
+  //here goes ajax request for login
 
-$("#forgot-password-btn").click(function (){
-  $("#app-login-page").hide();
-  $("#app-forgot-password-page").show();
-});
+  mainView.router.loadPage("views/load-data.html");
+  // localStorage.setItem("login", auth);
 
-$("#show-sign-in-btn").click(function (){
-  $("#app-forgot-password-page").hide();
-  $("#app-login-page").show();
-});
+}
 
-$("#recover-password-btn").click(function (){
-  myApp.alert("Se ha enviado una nueva contraseña a: " + $("#username-forgot-password").val());
-  $("#app-forgot-password-page").hide();
-  $("#app-login-page").show();
-});
+function forgotPassword() {
+  var username = $$("#username-forgot-password").val().trim();
+  if(username == ""){
+    myApp.alert("Debe ingresar un correo");
+    return;
+  }
+
+  //here goes ajax request for login
+
+  mainView.router.loadPage("views/login.html");
+  // localStorage.setItem("login", auth);
+
+}
+
+// $("#sign-in-btn").click(function (){
+//   // mainView.router.loadPage("index.html");
+//   localStorage.setItem("login", "1");
+// });
+
+// $("#sign-out-app").click(function (){
+//   localStorage.removeItem("login");
+//   $("#app-login-page").show();
+// });
+//
+// $("#forgot-password-btn").click(function (){
+//   $("#app-login-page").hide();
+//   $("#app-forgot-password-page").show();
+// });
+//
+// $("#show-sign-in-btn").click(function (){
+//   $("#app-forgot-password-page").hide();
+//   $("#app-login-page").show();
+// });
+//
+// $("#recover-password-btn").click(function (){
+//   myApp.alert("Se ha enviado una nueva contraseña a: " + $("#username-forgot-password").val());
+//   $("#app-forgot-password-page").hide();
+//   $("#app-login-page").show();
+// });
