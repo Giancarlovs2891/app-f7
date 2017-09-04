@@ -1,10 +1,14 @@
-function addProductToCart(x) {
-  myApp.prompt('Cantidad', function (data) {
-      // @data contains input value
-      // myApp.confirm('Are you sure that your name is ' + data + '?', function () {
-      //   myApp.addNotification({
-      //       message: 'Producto agregado Cantidad:' + data
-      //   });
-      // });
-  });
-}
+var APP_VIEWS = {
+  login : "views/login.html",
+  forgot_password : "views/forgot-password.html",
+  load_data : "views/load-data.html",
+  change_password : "views/change-password.html",
+  sync_data : "views/sync-data.html",
+  stores : "views/stores.html",
+  clients_list : "views/clients-list.html",
+  client_profile : "views/client-profile.html",
+  client_profile_edit : "views/client-profile-edit.html",
+  products : "views/products.html",
+  products_shopping_cart : "views/products-shopping-cart.html",
+  debts : "views/debts.html"
+};

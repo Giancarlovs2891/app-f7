@@ -18,6 +18,7 @@
     <!-- <link rel="stylesheet" href="css/datatables/datatables.min.css"> -->
 
     <link rel="icon" href="img/icon.png">
+    <script type="text/javascript" src="js/main.js"></script>
   </head>
   <body>
     <!-- LEFT MENU -->
@@ -31,14 +32,14 @@
               <div class="content-block left-menu-header">
                 <img src="img/logo.png" alt="">
                 <div class="left-menu-info-user">
-                  <p class="left-menu-user">Giancarlo Valencia Sierra</p>
-                  <p class="left-menu-db">Bodega: FIC02</p>
+                  <p class="left-menu-user" id="user-info-menu">Giancarlo Valencia Sierra</p>
+                  <p class="left-menu-db" id="selected-store-menu">Bodega: FIC02</p>
                 </div>
               </div>
-              <div class="list-block">
+              <div class="list-block" id="main-options-menu">
                 <ul>
                   <li>
-                    <a href="views/change-password.html" class="item-link close-panel">
+                    <a href="views/change-password.html" class="item-link close-panel" id="settings-menu">
                       <div class="item-content">
                         <div class="item-media icon-lighten"><i class="material-icons">settings</i></div>
                         <div class="item-inner">
@@ -48,11 +49,45 @@
                     </a>
                   </li>
                   <li>
-                    <a href="views/sync-data.html" class="item-link close-panel">
+                    <a href="views/sync-data.html" class="item-link close-panel" id="sync-data-menu">
                       <div class="item-content">
                         <div class="item-media icon-lighten"><i class="material-icons">sync</i></div>
                         <div class="item-inner">
                           <div class="item-title">Sincronización</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="list-block" id="client-options-menu" style="display: none;">
+                <ul>
+                  <li>
+                    <a href="views/change-password.html" class="item-link close-panel" id="client-profile-edit-menu">
+                      <div class="item-content">
+                        <div class="item-media icon-lighten"><i class="material-icons">settings</i></div>
+                        <div class="item-inner">
+                          <div class="item-title">Actualizar datos</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="views/sync-data.html" class="item-link close-panel" id="client-product-list-menu">
+                      <div class="item-content">
+                        <div class="item-media icon-lighten"><i class="material-icons">sync</i></div>
+                        <div class="item-inner">
+                          <div class="item-title">Pedidos</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="views/debts.html" class="item-link close-panel" id="client-debts-menu">
+                      <div class="item-content">
+                        <div class="item-media icon-lighten"><i class="material-icons">sync</i></div>
+                        <div class="item-inner">
+                          <div class="item-title">Cartera</div>
                         </div>
                       </div>
                     </a>
@@ -76,7 +111,7 @@
                     </div>
                   </li>
                   <li>
-                    <a href="#" class="item close-panel" id="sign-out-app">
+                    <a href="#" class="item close-panel" id="sign-out-app-menu">
                       <div class="item-content">
                         <div class="item-media icon-lighten"><i class="material-icons">exit_to_app</i></div>
                         <div class="item-inner">
@@ -94,6 +129,7 @@
     </div>
     <!-- END LEFT MENU -->
 
+    <!-- MAIN CONTAINER -->
     <div class="view view-main">
       <div class="pages navbar-fixed">
         <div data-page="index" class="page">
@@ -102,17 +138,36 @@
         </div>
       </div>
     </div>
+    <!-- END MAIN CONTAINER -->
 
+    <!-- SCRIPTS -->
     <script type="text/javascript" src="js/DB.js"></script>
     <script type="text/javascript" src="js/framework7.js"></script>
     <script type="text/javascript" src="js/myApp.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <!-- <script type="text/javascript" src="js/cordova.js"></script> -->
     <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/login.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+
+    <!-- MODULES -->
+    <script type="text/javascript" src="js/modules/auth.js"></script>
+    <script type="text/javascript" src="js/modules/app-main-info.js"></script>
+    <script type="text/javascript" src="js/modules/client.js"></script>
+    <script type="text/javascript" src="js/modules/products.js"></script>
+    <script type="text/javascript" src="js/modules/debts.js"></script>
+
     <!-- SCRIPT for datatables -->
     <script type="text/javascript" src="js/datatables/datatables.min.js"></script>
+
+    <!-- ON DOCUMENT READY -->
+    <script type="text/javascript">
+      $(document).ready(function(){
+        if (!localStorage.getItem("auth")) {
+          mainView.router.loadPage(APP_VIEWS.login);
+        } else {
+          mainView.router.loadPage(APP_VIEWS.stores);
+        }
+      });
+    </script>
 
   </body>
 </html>
