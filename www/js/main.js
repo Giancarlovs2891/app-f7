@@ -1,5 +1,5 @@
 var APP_VIEWS = {
-  main : "views/main.html",
+  main : "views/main-menu.html",
   login : "views/login.html",
   forgot_password : "views/forgot-password.html",
   load_data : "views/load-data.html",
