@@ -10,7 +10,7 @@ myApp.onPageInit('login', function (page) {
     var auth = "Basic " + btoa(username+":"+password);
 
     //here goes ajax request for login
-    var data = {url: APP_VIEWS.load_data, one: 'first', two: 'second', context: {1:"1",2:"2",3:[{a:"b"},{c:"d"}]} };
+    var data = {url: APP_VIEWS.main, one: 'first', two: 'second', context: {1:"1",2:"2",3:[{a:"b"},{c:"d"}]} };
     var result = $.param(data);
     mainView.router.loadPage(data);
     localStorage.setItem("auth", auth);
